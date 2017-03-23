@@ -41,15 +41,3 @@ export class AppComponent {
 
 
 
-
- login() {
-    this.af.auth.login({
-      provider: AuthProviders.Anonymous,
-      method: AuthMethods.Anonymous
-    });
-  }
-
-  Send(desc: string) {
-      this.items.push({ message: desc});
-      this.msgVal = '';
-  }
