@@ -1,3 +1,9 @@
-<h1>
-  {{title}}
-</h1>
+<div class="row columns">
+  <button (click)="login()" *ngIf="!name">Anonymous Login</button>
+
+  <input type="text" id="message" *ngIf="name" placeholder="What is it that you do?" (keyup.enter)="Send($event.target.value)" [(ngModel)]="message" />
+
+  <ul>
+    <li *ngFor="let item of items | async">{{ item.message }}</li>
+  </ul>
+</div>
