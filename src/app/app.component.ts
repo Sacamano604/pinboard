@@ -33,9 +33,13 @@ export class AppComponent {
     });
   }
 
-  Send(desc: string) {
-    this.items.push({ message: desc });
+  send(messageValue: string) {
+    this.items.push( { message: messageValue } );
     this.message = '';
+  }
+
+  delete(messageKey: string) {
+    this.items.remove( messageKey );
   }
 }
 
