@@ -1,9 +1,13 @@
-<div class="row columns">
-  <button (click)="login()" *ngIf="!name">Anonymous Login</button>
+<button (click)="login()" *ngIf="!name">Anonymous Login</button>
 
-  <input type="text" id="message" *ngIf="name" placeholder="What is it that you do?" (keyup.enter)="send($event.target.value)" [(ngModel)]="message" />
+<input type="text" id="message" *ngIf="name" placeholder="Message" (keyup.enter)="send($event.target.value)" [(ngModel)]="message" />
 
-  <ul>
-    <li *ngFor="let item of items | async">{{ item.message }} <button (click)="delete(item.$key)">Remove</button></li>
-  </ul>
-</div>
+  <div class="mdl-card mdl-shadow--2dp demo-card-square" *ngFor="let item of items | async">
+    <div class="mdl-card__supporting-text">
+      {{ item.message }}
+    </div>
+    <div class="mdl-card__actions mdl-card--border">
+      <a class="mdl-button mdl-button--accent mdl-js-button mdl-js-ripple-effect" (click)="delete(item.$key)">Delete</a>
+    </div>
+  </div>
+  
