@@ -1,4 +1,17 @@
-<button (click)="login()" *ngIf="!name">Anonymous Login</button>
+<nav>
+  <div class="nav-wrapper">
+    <div class="container">
+      <a href="#!" class="brand-logo">Pin Board</a>
+      <a class="btn waves-effect waves-light" id="loginButton" (click)="login()" *ngIf="!name">Anonymous Login</a>
+    </div>
+  </div>
+</nav>
+
+
+
+
+
+<div class="container">
 
 <input type="text" id="message" *ngIf="name" placeholder="Message" (keyup.enter)="send($event.target.value)" [(ngModel)]="message" />
 
@@ -11,3 +24,5 @@
     </div>
   </div>
   
+
+  </div>
