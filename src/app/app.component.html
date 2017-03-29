@@ -2,19 +2,19 @@
   <div class="nav-wrapper">
     <div class="container">
       <a href="#!" class="brand-logo">Pin Board</a>
-      <a class="btn waves-effect waves-light" id="loginButton" (click)="login()" *ngIf="!name">Anonymous Login</a>
     </div>
   </div>
 </nav>
 
+<div class="container" id="loginContainer" *ngIf="!name">
+  <h3>Login</h3>
+  <p *ngIf="logoutSuccess" class="logoutSuccess"><strong>Successfully Logged Out</strong></p>
+  <a class="btn waves-effect waves-light" id="loginButton" (click)="googleLogin()">Google Login</a>
+</div>
 
-
-
-
-<div class="container">
-
-<input type="text" id="message" *ngIf="name" placeholder="Message" (keyup.enter)="send($event.target.value)" [(ngModel)]="message" />
-
+<div class="container"  *ngIf="name">
+  <a class="btn waves-effect waves-light" id="loginButton" (click)="logout()">Logout</a>
+  <input type="text" id="message" placeholder="Message" (keyup.enter)="send($event.target.value)" [(ngModel)]="message" />
   <div class="mdl-card mdl-shadow--2dp demo-card-square" *ngFor="let item of items | async">
     <div class="mdl-card__supporting-text">
       {{ item.message }}
@@ -23,6 +23,5 @@
       <a class="mdl-button mdl-button--accent mdl-js-button mdl-js-ripple-effect" (click)="delete(item.$key)">Delete</a>
     </div>
   </div>
-  
-
   </div>
+

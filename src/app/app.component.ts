@@ -11,26 +11,33 @@ export class AppComponent {
   items: FirebaseListObservable<any>;
   name: any;
   message: string = '';
+  logoutSuccess: any;
   
   constructor(public af: AngularFire) {
-    this.items = af.database.list('/messages', {
-      query: {
-        limitToLast: 50
-      }
-    });
 
     this.af.auth.subscribe(auth => {
       if (auth) {
+       this.items = af.database.list('/users/' + auth.uid + '/messages', {
+          query: {
+            limitToLast: 50
+          }
+       });
         this.name = auth;
       }
     });
   }
 
-  login() {
+  googleLogin() {
     this.af.auth.login({
-      provider: AuthProviders.Anonymous,
-      method: AuthMethods.Anonymous
+      provider: AuthProviders.Google,
+      method: AuthMethods.Popup
     });
+  }
+
+  logout() {
+    this.logoutSuccess = true;
+    this.name = null;
+    return this.af.auth.logout();
   }
 
   send(messageValue: string) {
@@ -41,6 +48,8 @@ export class AppComponent {
   delete(messageKey: string) {
     this.items.remove( messageKey );
   }
+
+
 }
 
 
