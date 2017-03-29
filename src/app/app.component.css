@@ -37,3 +37,17 @@ div#loginContainer h3 {
     padding-top: 30px;
     color: green;
 }
+.userDetails {
+    float: right;
+    padding-top: 15px;
+}
+.profileImage {
+    max-width: 30px;
+    border-radius: 15px;
+}
+@media only screen 
+  and (max-width: 992px)  {
+    .brand-logo {
+        left: 20%;
+    }
+}

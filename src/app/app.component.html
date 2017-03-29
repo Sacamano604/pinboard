@@ -2,6 +2,10 @@
   <div class="nav-wrapper">
     <div class="container">
       <a href="#!" class="brand-logo">Pin Board</a>
+      <div class="userDetails" *ngIf="name">
+        <p>Logged in as: {{ displayName }}
+        <img class="profileImage" src="{{ displayImageUrl }}" /></p>
+      </div> 
     </div>
   </div>
 </nav>
@@ -15,6 +19,7 @@
 <div class="container"  *ngIf="name">
   <a class="btn waves-effect waves-light" id="loginButton" (click)="logout()">Logout</a>
   <input type="text" id="message" placeholder="Message" (keyup.enter)="send($event.target.value)" [(ngModel)]="message" />
+ 
   <div class="mdl-card mdl-shadow--2dp demo-card-square" *ngFor="let item of items | async">
     <div class="mdl-card__supporting-text">
       {{ item.message }}

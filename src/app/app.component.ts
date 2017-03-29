@@ -10,9 +10,11 @@ import { AngularFire, AuthProviders, AuthMethods, FirebaseListObservable } from 
 export class AppComponent {
   items: FirebaseListObservable<any>;
   name: any;
+  displayName: string;
+  displayImageUrl: string;
   message: string = '';
   logoutSuccess: any;
-  
+
   constructor(public af: AngularFire) {
 
     this.af.auth.subscribe(auth => {
@@ -23,6 +25,9 @@ export class AppComponent {
           }
        });
         this.name = auth;
+        this.displayName = auth.google.displayName;
+        this.displayImageUrl = auth.google.photoURL;
+        console.log(this.displayImageUrl);
       }
     });
   }
@@ -51,6 +56,3 @@ export class AppComponent {
 
 
 }
-
-
-
