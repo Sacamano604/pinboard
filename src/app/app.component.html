@@ -26,11 +26,14 @@
 </nav>
 
 
-<div class="container" id="loginContainer" *ngIf="!name">
-  <h3>Login</h3>
-  <p *ngIf="logoutSuccess" class="logoutSuccess"><strong>Successfully Logged Out</strong></p>
-  <a class="btn waves-effect waves-light" id="loginButton" (click)="googleLogin()">Google Login</a>
+<div class="wrapper" *ngIf="!name">
+  <h2>Login</h2>
+  <p *ngIf="logoutSuccess" class="text-success"><strong>Successfully Logged Out</strong></p>
+  <a class="btn waves-effect waves-light" id="loginButton" (click)="googleLogin()">
+    <img class="signIn" src="/assets/images/google_sign-in.png" onmouseover="this.src='/assets/images/google_sign-in_hover.png';" onmouseout="this.src='/assets/images/google_sign-in.png';"/>
+  </a>
 </div>
+
 
 <div class="container"  *ngIf="name">
   <input type="text" class="form-control" id="message" placeholder="Add message" (keyup.enter)="send($event.target.value)" [(ngModel)]="message" />

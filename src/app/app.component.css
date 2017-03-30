@@ -44,3 +44,18 @@ input#message {
 .deleteButton {
     text-align: right;
 }
+.signIn {
+    width: 230px;
+}
+#loginButton {
+    cursor: pointer;
+}
+a#loginButton {
+    box-shadow: none;
+}
+.wrapper {
+    width: 300px;
+    padding: 20px;
+    margin: 0 auto;
+    text-align: center;
+}
