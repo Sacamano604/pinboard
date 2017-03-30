@@ -1,3 +1,4 @@
+<!-- Main Navbar -->
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -9,7 +10,7 @@
       </button>
       <a class="navbar-brand" href="#">PinBoard</a>
     </div>
-
+    <!-- Right side login drop down -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" *ngIf="name">
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
@@ -24,8 +25,7 @@
     </div>
   </div>
 </nav>
-
-
+<!-- Sign in screen -->
 <div class="wrapper" *ngIf="!name">
   <h2>Sign In</h2>
   <p *ngIf="logoutSuccess" class="text-success"><strong>Successfully Logged Out</strong></p>
@@ -33,11 +33,12 @@
     <img class="signIn" src="/assets/images/google_sign-in.png" onmouseover="this.src='/assets/images/google_sign-in_hover.png';" onmouseout="this.src='/assets/images/google_sign-in.png';"/>
   </a>
 </div>
-
-
+<!-- Page Body -->
 <div class="container"  *ngIf="name">
+  <!-- Input to add messages -->
   <input type="text" class="form-control" id="message" placeholder="Add message" (keyup.enter)="send($event.target.value)" [(ngModel)]="message" />
   <div class="row">
+    <!-- Card for displaying the messages -->
     <div class="col-sm-6 col-md-4" *ngFor="let item of items | async">
       <div class="thumbnail">
         <div class="caption">
@@ -47,9 +48,7 @@
               <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
             </button>
             <ul class="dropdown-menu">
-              <li><a href="#">Category</a></li>
-              <li><a href="#">Another action</a></li>
-              <li><a href="#">Something else here</a></li>
+              <li><a href="#">Change Category</a></li>
               <li role="separator" class="divider"></li>
               <li class="removeItem"><a href="#" (click)="delete(item.$key)">Remove</a></li>
             </ul>
