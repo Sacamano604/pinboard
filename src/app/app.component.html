@@ -26,7 +26,7 @@
       <form class="navbar-form navbar-right">
         <div class="input-group">
           <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-filter"></span></span>
-          <input type="text" class="form-control" placeholder="Filter messages" aria-describedby="basic-addon1">
+          <input type="text" class="form-control" placeholder="Filter messages" aria-describedby="basic-addon1" name="filter" [(ngModel)]="filterValue">
         </div>
       </form>
     </div>
@@ -46,7 +46,7 @@
   <input type="text" class="form-control" id="message" placeholder="Add message" (keyup.enter)="send($event.target.value)" [(ngModel)]="message" />
   <div class="row">
     <!-- Card for displaying the messages -->
-    <div class="col-sm-6 col-md-4" *ngFor="let item of items | async">
+    <div class="col-sm-6 col-md-4" *ngFor="let item of items | async | messageFilterPipe: filterValue">
       <div class="thumbnail">
         <div class="caption">
           <p><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span>{{ item.message }}</p>
