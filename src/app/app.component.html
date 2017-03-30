@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">PinBoard</a>
+      <a class="navbar-brand siteTitle" href="#">Pinboard</a>
     </div>
     <!-- Right side login drop down -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" *ngIf="name">
@@ -49,7 +49,7 @@
     <div class="col-sm-6 col-md-4" *ngFor="let item of items | async | messageFilterPipe: filterValue">
       <div class="thumbnail">
         <div class="caption">
-          <p><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span>{{ item.message }}</p>
+          <span class="glyphicon glyphicon-bookmark topLeft" aria-hidden="true"></span><p>{{ item.message }}</p>
           <div class="btn-group actionsButton">
             <button type="button" class="btn btn-info dropdown-toggle btn-xs" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>

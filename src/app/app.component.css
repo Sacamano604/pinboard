@@ -1,3 +1,7 @@
+.siteTitle {
+    font-size: 2em;
+    line-height: 1em;
+}
 .navbar {
     border-radius: 0px;
 }
@@ -24,6 +28,9 @@ li.loggedInUser {
 ul.nav .dropdown-menu {
     min-width: 250px;
     text-align: right;
+}
+div.actionsButton .dropdown-menu {
+    left: -121px;
 }
 .logout {
     cursor: pointer;
@@ -58,10 +65,11 @@ a#loginButton {
     background-color: #ccc;
     border-radius: 10px;
 }
-.caption span {
-    padding-right: 5px;
+span.topLeft {
+    float: left;
+    font-size: 25px;
+    padding-right: 10px;
 }
-
 span.clear { 
     clear: right; 
     display: block; 
