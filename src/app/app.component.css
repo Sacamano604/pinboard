@@ -21,7 +21,7 @@ li.loggedInUser {
     color: #333;
     padding: 3px 20px;
 }
-.dropdown-menu {
+ul.nav .dropdown-menu {
     min-width: 250px;
     text-align: right;
 }
@@ -41,9 +41,6 @@ input#message {
         0 1px 5px 0 rgba(0,0,0,0.12), 
         0 3px 1px -2px rgba(0,0,0,0.2);
 }
-.deleteButton {
-    text-align: right;
-}
 .signIn {
     width: 230px;
 }
@@ -58,4 +55,31 @@ a#loginButton {
     padding: 20px;
     margin: 0 auto;
     text-align: center;
+    background-color: #ccc;
+    border-radius: 10px;
+}
+.caption span {
+    padding-right: 5px;
+}
+
+span.clear { 
+    clear: right; 
+    display: block; 
+}
+.actionsButton {
+    float: right;
+}
+
+
+
+
+.actionsButton .glyphicon {
+    top: 2px;
+}
+.actionsButton .glyphicon-cog {
+    padding-right: 0px;
+}
+li.removeItem a:hover {
+    color: #fff;
+    background-color: #d9534f;
 }
