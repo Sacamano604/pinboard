@@ -1,53 +1,46 @@
-nav {
-    background-color: #2196F3;
+.navbar {
+    border-radius: 0px;
 }
-input[type=text]:focus:not([readonly]) {
-    border-bottom: 1px solid #ffab40;
-    box-shadow: 0 1px 0 0 #ffab40;
+.navbar-default {
+    color: #fff;
+    background-color: #3d3d3d;
+    border-color: #414141;
+    box-shadow: 0px 1px 2px #4e4e4e;
 }
-.demo-card-square.mdl-card {
-    width: 200px;
-    float: left;
-    margin: 1rem;
-    position: relative;
+.navbar-default .navbar-brand,
+.navbar-default .navbar-nav>li>a {
+    color: #fff;
 }
-.mdl-card__supporting-text {
-    min-height: 150px;
+.navbar-default .navbar-nav>.open>a {
+    background-color: #5e5e5e;
 }
-.demo-card-square.mdl-card:hover {
-    box-shadow: 
-        0 8px 10px 1px rgba(0, 0, 0, .14), 
-        0 3px 14px 2px rgba(0, 0, 0, .12), 
-        0 5px 5px -3px rgba(0, 0, 0, .2);
+.navbar-nav>li>a {
+    padding-top: 10px;
 }
-a#loginButton {
-    background-color: #ffab40;
-    text-transform: none;
+li.loggedInUser {
+    color: #333;
+    padding: 3px 20px;
 }
-input#message {
-    margin-top: 20px;
+.dropdown-menu {
+    min-width: 250px;
+    text-align: right;
 }
-div#loginContainer {
-    text-align: center;
+.logout {
+    cursor: pointer;
 }
-div#loginContainer h3 {
-    color: rgba(94, 80, 80, 0.87);
-}
-.logoutSuccess {
-    padding-top: 30px;
-    color: green;
-}
-.userDetails {
-    float: right;
-    padding-top: 15px;
-}
-.profileImage {
-    max-width: 30px;
+img.profileImage {
+    width: 30px;
     border-radius: 15px;
 }
-@media only screen 
-  and (max-width: 992px)  {
-    .brand-logo {
-        left: 20%;
-    }
+input#message {
+    margin-bottom: 20px;
+}
+.thumbnail:hover {
+    box-shadow: 
+        0 2px 2px 0 rgba(0,0,0,0.14), 
+        0 1px 5px 0 rgba(0,0,0,0.12), 
+        0 3px 1px -2px rgba(0,0,0,0.2);
+}
+.deleteButton {
+    text-align: right;
 }

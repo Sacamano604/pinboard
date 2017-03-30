@@ -1,14 +1,30 @@
-<nav>
-  <div class="nav-wrapper">
-    <div class="container">
-      <a href="#!" class="brand-logo">Pin Board</a>
-      <div class="userDetails" *ngIf="name">
-        <p>Logged in as: {{ displayName }}
-        <img class="profileImage" src="{{ displayImageUrl }}" /></p>
-      </div> 
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">PinBoard</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" *ngIf="name">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img class="profileImage" src="{{ displayImageUrl }}" /><span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li class="loggedInUser">Logged in as: {{ displayName }}</li>
+            <li role="separator" class="divider"></li>
+            <li class="logout"><a (click)="logout()">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
     </div>
   </div>
 </nav>
+
 
 <div class="container" id="loginContainer" *ngIf="!name">
   <h3>Login</h3>
@@ -17,16 +33,17 @@
 </div>
 
 <div class="container"  *ngIf="name">
-  <a class="btn waves-effect waves-light" id="loginButton" (click)="logout()">Logout</a>
-  <input type="text" id="message" placeholder="Message" (keyup.enter)="send($event.target.value)" [(ngModel)]="message" />
- 
-  <div class="mdl-card mdl-shadow--2dp demo-card-square" *ngFor="let item of items | async">
-    <div class="mdl-card__supporting-text">
-      {{ item.message }}
-    </div>
-    <div class="mdl-card__actions mdl-card--border">
-      <a class="mdl-button mdl-button--accent mdl-js-button mdl-js-ripple-effect" (click)="delete(item.$key)">Delete</a>
+  <input type="text" class="form-control" id="message" placeholder="Add message" (keyup.enter)="send($event.target.value)" [(ngModel)]="message" />
+  <div class="row">
+    <div class="col-sm-6 col-md-4" *ngFor="let item of items | async">
+      <div class="thumbnail">
+        <div class="caption">
+          <p>{{ item.message }}</p>
+          <p class="deleteButton"><a href="#" class="btn btn-danger btn-xs" role="button" (click)="delete(item.$key)">Remove</a></p>
+        </div>
+      </div>
     </div>
   </div>
-  </div>
+</div>
+
 

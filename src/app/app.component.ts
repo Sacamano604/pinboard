@@ -27,7 +27,6 @@ export class AppComponent {
         this.name = auth;
         this.displayName = auth.google.displayName;
         this.displayImageUrl = auth.google.photoURL;
-        console.log(this.displayImageUrl);
       }
     });
   }
