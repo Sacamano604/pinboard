@@ -45,7 +45,7 @@ export class AppComponent {
   }
 
   send(messageValue: string) {
-    this.items.push( { message: messageValue } );
+    this.items.push( { message: messageValue, category:  '#333'} );
     this.message = '';
   }
 

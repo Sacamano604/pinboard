@@ -49,7 +49,7 @@
     <div class="col-sm-6 col-md-4" *ngFor="let item of items | async | messageFilterPipe: filterValue">
       <div class="thumbnail">
         <div class="caption">
-          <span class="glyphicon glyphicon-bookmark topLeft" aria-hidden="true"></span><p>{{ item.message }}</p>
+          <span class="glyphicon glyphicon-bookmark topLeft" aria-hidden="true" [ngStyle]="{ 'color': item.category }"></span><p>{{ item.message }} {{ item.category }}</p>
           <div class="btn-group actionsButton">
             <button type="button" class="btn btn-info dropdown-toggle btn-xs" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
