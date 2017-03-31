@@ -39,32 +39,48 @@
 
 <!-- Page Body -->
 <div class="container"  *ngIf="name">
-  <!-- Input to add messages -->
-  <input type="text" class="form-control" id="message" placeholder="Add message" (keyup.enter)="send($event.target.value)" [(ngModel)]="message" />
-  <div class="row">
-    <!-- Card for displaying the messages -->
-    <div class="col-sm-6 col-md-4" *ngFor="let item of items | async | messageFilterPipe: filterValue">
-      <div class="thumbnail">
-        <div class="caption">
-          <span class="glyphicon glyphicon-bookmark topLeft" aria-hidden="true" [ngStyle]="{ 'color': item.category }"></span>
-          <p>{{ item.message }}</p>
-          <!--<p>{{ item.$key }}</p>-->
-          <div class="btn-group actionsButton">
-            <button type="button" class="btn btn-info dropdown-toggle btn-xs" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-            </button>
-            <ul class="dropdown-menu">
-              <li><a href="#">Change Category</a></li>
-              <li role="separator" class="divider"></li>
-              <li class="removeItem"><a href="#" (click)="delete(item.$key)">Remove</a></li>
-            </ul>
-          </div>
-          <span class="clear"></span>
-        </div>
-      </div>
+  <div class="row row-offcanvas row-offcanvas-left">
+    <div class="col-6 col-md-3 sidebar-offcanvas" id="sidebar">
+      <p>I'm a fucking sidebar</p>
     </div>
-  </div>
-</div>
+
+
+    <div class="col-12 col-md-9">
+      <!-- Input to add messages -->
+      <input type="text" class="form-control" id="message" placeholder="Add message" (keyup.enter)="send($event.target.value)" [(ngModel)]="message" />
+      
+      <div class="row">
+        <!-- Card for displaying the messages -->
+        <div class="col-sm-6 col-md-4" *ngFor="let item of items | async | messageFilterPipe: filterValue">
+          <div class="thumbnail">
+            <div class="caption">
+              <span class="glyphicon glyphicon-bookmark topLeft" aria-hidden="true" [ngStyle]="{ 'color': item.category }"></span>
+              <p>{{ item.message }}</p>
+              <!--<p>{{ item.$key }}</p>-->
+              <div class="btn-group actionsButton">
+                <button type="button" class="btn btn-info dropdown-toggle btn-xs" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Change Category</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li class="removeItem"><a href="#" (click)="delete(item.$key)">Remove</a></li>
+                </ul>
+              </div>
+              <span class="clear"></span>
+            </div>
+          </div>
+        </div>
+      </div><!-- Row -->
+    </div>
+
+
+
+
+
+
+  </div><!-- row off canvas -->
+</div><!-- Container -->
 
 
 

@@ -9,12 +9,12 @@ import { AngularFire, AuthProviders, AuthMethods, FirebaseListObservable } from 
 
 export class AppComponent {
   items: FirebaseListObservable<any>;
-  name: any;
   displayName: string;
   displayImageUrl: string;
   message: string = '';
 
   @Input() logoutSuccess: boolean;
+  @Input() name: any;
 
   constructor(public af: AngularFire) {
 
