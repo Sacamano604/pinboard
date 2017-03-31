@@ -33,11 +33,8 @@
   </div>
 </nav>
 
-
-
-
 <!-- Login component -->
-<login-component *ngIf="!name"></login-component>
+<login-component *ngIf="!name" [logoutSuccess]="logoutSuccess"></login-component>
 
 
 <!-- Page Body -->

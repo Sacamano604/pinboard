@@ -1,12 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { AngularFire, AuthProviders, AuthMethods, FirebaseListObservable } from 'angularfire2';
+
+import { AppComponent } from '../../app.component';
 
 @Component({
   selector: 'login-component',
   templateUrl: './login-component.component.html',
   styleUrls: ['./login-component.component.css']
 })
-export class LoginComponentComponent {
+export class LoginComponent {
+  @Input() logoutSuccess: boolean;
 
   constructor(public af: AngularFire) { }
 

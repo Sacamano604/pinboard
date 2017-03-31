@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { AngularFire, AuthProviders, AuthMethods, FirebaseListObservable } from 'angularfire2';
 
 @Component({
@@ -13,7 +13,8 @@ export class AppComponent {
   displayName: string;
   displayImageUrl: string;
   message: string = '';
-  logoutSuccess: any;
+
+  @Input() logoutSuccess: boolean;
 
   constructor(public af: AngularFire) {
 
@@ -30,14 +31,7 @@ export class AppComponent {
       }
     });
   }
-
-  // googleLogin() {
-  //   this.af.auth.login({
-  //     provider: AuthProviders.Google,
-  //     method: AuthMethods.Popup
-  //   });
-  // }
-
+  
   logout() {
     this.logoutSuccess = true;
     this.name = null;
