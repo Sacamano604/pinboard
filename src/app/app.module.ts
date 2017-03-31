@@ -6,6 +6,7 @@ import { AngularFireModule } from 'angularfire2';
 
 import { AppComponent } from './app.component';
 import { MessageFilterPipePipe } from './pipes/message-filter-pipe.pipe';
+import { LoginComponentComponent } from './components/login-component/login-component.component';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyB7W5NYhphz2y4tEdMOgzgq_8xMYf1M28Q",
@@ -18,7 +19,8 @@ export const firebaseConfig = {
 @NgModule({
   declarations: [
     AppComponent,
-    MessageFilterPipePipe
+    MessageFilterPipePipe,
+    LoginComponentComponent
   ],
   imports: [
     BrowserModule,

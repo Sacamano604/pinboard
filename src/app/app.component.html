@@ -32,14 +32,14 @@
     </div>
   </div>
 </nav>
-<!-- Sign in screen -->
-<div class="wrapper" *ngIf="!name">
-  <h2>Sign In</h2>
-  <p *ngIf="logoutSuccess" class="text-success"><strong>Successfully Logged Out</strong></p>
-  <a class="btn waves-effect waves-light" id="loginButton" (click)="googleLogin()">
-    <img class="signIn" src="/assets/images/google_sign-in.png" onmouseover="this.src='/assets/images/google_sign-in_hover.png';" onmouseout="this.src='/assets/images/google_sign-in.png';"/>
-  </a>
-</div>
+
+
+
+
+<!-- Login component -->
+<login-component *ngIf="!name"></login-component>
+
+
 <!-- Page Body -->
 <div class="container"  *ngIf="name">
   <!-- Input to add messages -->
@@ -49,7 +49,9 @@
     <div class="col-sm-6 col-md-4" *ngFor="let item of items | async | messageFilterPipe: filterValue">
       <div class="thumbnail">
         <div class="caption">
-          <span class="glyphicon glyphicon-bookmark topLeft" aria-hidden="true" [ngStyle]="{ 'color': item.category }"></span><p>{{ item.message }} {{ item.category }}</p>
+          <span class="glyphicon glyphicon-bookmark topLeft" aria-hidden="true" [ngStyle]="{ 'color': item.category }"></span>
+          <p>{{ item.message }}</p>
+          <!--<p>{{ item.$key }}</p>-->
           <div class="btn-group actionsButton">
             <button type="button" class="btn btn-info dropdown-toggle btn-xs" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>

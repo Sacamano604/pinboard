@@ -31,12 +31,12 @@ export class AppComponent {
     });
   }
 
-  googleLogin() {
-    this.af.auth.login({
-      provider: AuthProviders.Google,
-      method: AuthMethods.Popup
-    });
-  }
+  // googleLogin() {
+  //   this.af.auth.login({
+  //     provider: AuthProviders.Google,
+  //     method: AuthMethods.Popup
+  //   });
+  // }
 
   logout() {
     this.logoutSuccess = true;
