@@ -31,7 +31,7 @@
       </form>
     </div>
   </div>
-</nav>
+</nav><!-- /Main Navbar -->
 
 <!-- Login component -->
 <login-component *ngIf="!name" [logoutSuccess]="logoutSuccess"></login-component>
@@ -45,13 +45,19 @@
 
     <div class="col-6 col-md-3 sidebar-offcanvas" id="sidebar">
       <h3>Categories</h3>
-      <p><a href="#">Add new category</a></p>
+
+
+
+      <ul>
+        <li *ngFor="let item of categories | async">{{ item.category }}</li>
+      </ul>
      
-     
 
 
-
-
+      
+      <input type="text" class="form-control" id="category" placeholder="Add category" (keyup.enter)="addCategory($event.target.value)" [(ngModel)]="category" *ngIf="addingCategory" />
+      <p><a href="#" (click)="addingCategory = !addingCategory">Add new category</a></p>
+      
 
 
 

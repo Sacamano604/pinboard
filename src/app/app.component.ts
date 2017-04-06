@@ -9,9 +9,11 @@ import { AngularFire, AuthProviders, AuthMethods, FirebaseListObservable } from 
 
 export class AppComponent {
   items: FirebaseListObservable<any>;
+  categories: FirebaseListObservable<any>;
   displayName: string;
   displayImageUrl: string;
   message: string = '';
+  category: string = '';
 
   @Input() logoutSuccess: boolean;
   @Input() name: any;
@@ -28,6 +30,12 @@ export class AppComponent {
         this.name = auth;
         this.displayName = auth.google.displayName;
         this.displayImageUrl = auth.google.photoURL;
+
+        this.categories = af.database.list('/users/' + auth.uid + '/categories/', {
+          query: {
+            limitToLast: 50
+          }
+        });
       }
     });
   }
@@ -41,6 +49,11 @@ export class AppComponent {
   send(messageValue: string) {
     this.items.push( { message: messageValue, category:  '#333'} );
     this.message = '';
+  }
+
+  addCategory(categoryValue: string) {
+    this.categories.push( { category: categoryValue } );
+    this.category = '';
   }
 
   delete(messageKey: string) {
