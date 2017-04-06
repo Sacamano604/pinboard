@@ -40,9 +40,25 @@
 <!-- Page Body -->
 <div class="container"  *ngIf="name">
   <div class="row row-offcanvas row-offcanvas-left">
+
+
+
     <div class="col-6 col-md-3 sidebar-offcanvas" id="sidebar">
-      <p>I'm a fucking sidebar</p>
-    </div>
+      <h3>Categories</h3>
+      <p><a href="#">Add new category</a></p>
+     
+     
+
+
+
+
+
+
+
+
+    
+
+    </div><!-- sidebar -->
 
 
     <div class="col-12 col-md-9">
@@ -58,7 +74,7 @@
               <p>{{ item.message }}</p>
               <!--<p>{{ item.$key }}</p>-->
               <div class="btn-group actionsButton">
-                <button type="button" class="btn btn-info dropdown-toggle btn-xs" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button type="button" class="btn btn-default dropdown-toggle btn-xs" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
                 </button>
                 <ul class="dropdown-menu">

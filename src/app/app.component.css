@@ -1,3 +1,4 @@
+/* Navbar */
 .siteTitle {
     font-size: 2em;
     line-height: 1em;
@@ -29,6 +30,11 @@ ul.nav .dropdown-menu {
     min-width: 250px;
     text-align: right;
 }
+.btn-default {
+    color: #717171;
+    background-color: #ccc;
+    border-color: #ccc;
+}
 div.actionsButton .dropdown-menu {
     left: -121px;
 }
@@ -48,9 +54,11 @@ input#message {
         0 1px 5px 0 rgba(0,0,0,0.12), 
         0 3px 1px -2px rgba(0,0,0,0.2);
 }
+/* Add message input */
 input#message {
     margin-bottom: 20px;
 }
+/* Message Card */
 span.topLeft {
     float: left;
     font-size: 25px;
