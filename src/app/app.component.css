@@ -63,6 +63,7 @@ span.topLeft {
     float: left;
     font-size: 25px;
     padding-right: 10px;
+    padding-top: 4px;
 }
 span.clear { 
     clear: right; 
@@ -80,4 +81,18 @@ span.clear {
 li.removeItem a:hover {
     color: #fff;
     background-color: #d9534f;
+}
+/* Nested Dropdown Styles */
+.dropdown-submenu { 
+    position: relative;
+}
+.dropdown-submenu .dropdown-menu {
+    top: 0;
+    left: -188px !important;
+    margin-top: -6px;
+    margin-left: -1px;
+    border-radius: 6px;
+}
+.dropdown-submenu:hover > .dropdown-menu {
+    display: block;
 }

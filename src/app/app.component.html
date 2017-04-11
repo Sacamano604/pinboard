@@ -37,36 +37,20 @@
 <login-component *ngIf="!name" [logoutSuccess]="logoutSuccess"></login-component>
 
 
-<!-- Page Body -->
+<!-- Page -->
 <div class="container"  *ngIf="name">
   <div class="row row-offcanvas row-offcanvas-left">
-
-
-
+    <!-- Sidebar -->
     <div class="col-6 col-md-3 sidebar-offcanvas" id="sidebar">
       <h3>Categories</h3>
-
-
-
       <ul>
         <li *ngFor="let item of categories | async">{{ item.category }}</li>
       </ul>
-     
-
-
-      
       <input type="text" class="form-control" id="category" placeholder="Add category" (keyup.enter)="addCategory($event.target.value)" [(ngModel)]="category" *ngIf="addingCategory" />
       <p><a href="#" (click)="addingCategory = !addingCategory">Add new category</a></p>
-      
-
-
-
-
-    
-
     </div><!-- sidebar -->
 
-
+    <!-- Main Body -->
     <div class="col-12 col-md-9">
       <!-- Input to add messages -->
       <input type="text" class="form-control" id="message" placeholder="Add message" (keyup.enter)="send($event.target.value)" [(ngModel)]="message" />
@@ -76,7 +60,7 @@
         <div class="col-sm-6 col-md-4" *ngFor="let item of items | async | messageFilterPipe: filterValue">
           <div class="thumbnail">
             <div class="caption">
-              <span class="glyphicon glyphicon-bookmark topLeft" aria-hidden="true" [ngStyle]="{ 'color': item.category }"></span>
+              <span class="glyphicon glyphicon-bookmark topLeft" aria-hidden="true" [ngStyle]="{ 'color': item.color }"></span>
               <p>{{ item.message }}</p>
               <!--<p>{{ item.$key }}</p>-->
               <div class="btn-group actionsButton">
@@ -84,7 +68,12 @@
                   <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
                 </button>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Change Category</a></li>
+                  <li class="dropdown-submenu">
+                    <a href="#">Change Category</a>
+                    <ul class="dropdown-menu">
+                      <li *ngFor="let item of categories | async"><a href="#">{{ item.category }}</a></li>
+                    </ul>
+                  </li>
                   <li role="separator" class="divider"></li>
                   <li class="removeItem"><a href="#" (click)="delete(item.$key)">Remove</a></li>
                 </ul>

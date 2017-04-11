@@ -14,6 +14,7 @@ export class AppComponent {
   displayImageUrl: string;
   message: string = '';
   category: string = '';
+  addingCategory: boolean;
 
   @Input() logoutSuccess: boolean;
   @Input() name: any;
@@ -47,13 +48,14 @@ export class AppComponent {
   }
 
   send(messageValue: string) {
-    this.items.push( { message: messageValue, category:  '#333'} );
+    this.items.push( { message: messageValue, category:  'default', color: '#333'} );
     this.message = '';
   }
 
   addCategory(categoryValue: string) {
     this.categories.push( { category: categoryValue } );
     this.category = '';
+    this.addingCategory = false;
   }
 
   delete(messageKey: string) {
