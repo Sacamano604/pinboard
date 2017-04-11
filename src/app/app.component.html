@@ -43,11 +43,26 @@
     <!-- Sidebar -->
     <div class="col-6 col-md-3 sidebar-offcanvas" id="sidebar">
       <h3>Categories</h3>
-      <ul>
-        <li *ngFor="let item of categories | async">{{ item.category }}</li>
+      <ul class="categoriesList">
+        <li *ngFor="let item of categories | async"><a href="#"><span class="categoryColor" [ngStyle]="{ 'background-color': item.color }"> </span> {{ item.category }}</a></li>
+        
       </ul>
-      <input type="text" class="form-control" id="category" placeholder="Add category" (keyup.enter)="addCategory($event.target.value)" [(ngModel)]="category" *ngIf="addingCategory" />
+      <input name="color" id="chosenColor" class="form-control" *ngIf="addingCategory" [colorPicker]="color" (colorPickerChange)="color=$event" [style.background]="color" [value]="color" />
+
+      <input type="text" class="form-control" id="category" placeholder="Add category" (keyup.enter)="addCategory(color, $event.target.value)" [(ngModel)]="category" *ngIf="addingCategory" />
+
+
+
+
+
       <p><a href="#" (click)="addingCategory = !addingCategory">Add new category</a></p>
+
+      <!--<input type="color" id="html5colorpicker" ng-change="pickedColor();" value="#ff0000" style="width:85%;">-->
+      
+
+
+
+
     </div><!-- sidebar -->
 
     <!-- Main Body -->
@@ -60,7 +75,7 @@
         <div class="col-sm-6 col-md-4" *ngFor="let item of items | async | messageFilterPipe: filterValue">
           <div class="thumbnail">
             <div class="caption">
-              <span class="glyphicon glyphicon-bookmark topLeft" aria-hidden="true" [ngStyle]="{ 'color': item.color }"></span>
+              <span class="glyphicon glyphicon-bookmark topLeft" aria-hidden="true" [ngStyle]="{ 'color': item.category }"></span>
               <p>{{ item.message }}</p>
               <!--<p>{{ item.$key }}</p>-->
               <div class="btn-group actionsButton">
@@ -71,7 +86,7 @@
                   <li class="dropdown-submenu">
                     <a href="#">Change Category</a>
                     <ul class="dropdown-menu">
-                      <li *ngFor="let item of categories | async"><a href="#">{{ item.category }}</a></li>
+                      <li *ngFor="let cat of categories | async"><a href="#" (click)="updateCategory(item.$key, cat.color)">{{ cat.category }}</a></li>
                     </ul>
                   </li>
                   <li role="separator" class="divider"></li>

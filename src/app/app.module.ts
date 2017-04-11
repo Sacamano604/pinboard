@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AngularFireModule } from 'angularfire2';
+import { ColorPickerModule } from 'angular2-color-picker';
 
 import { AppComponent } from './app.component';
 import { MessageFilterPipe } from './pipes/message-filter-pipe.pipe';
@@ -26,7 +27,8 @@ export const firebaseConfig = {
     BrowserModule,
     FormsModule,
     HttpModule,
-    AngularFireModule.initializeApp(firebaseConfig)
+    AngularFireModule.initializeApp(firebaseConfig),
+    ColorPickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

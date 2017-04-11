@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { AngularFire, AuthProviders, AuthMethods, FirebaseListObservable } from 'angularfire2';
+import { ColorPickerService } from 'angular2-color-picker';
 
 @Component({
   selector: 'app-root',
@@ -15,6 +17,7 @@ export class AppComponent {
   message: string = '';
   category: string = '';
   addingCategory: boolean;
+  color: string = "#333";
 
   @Input() logoutSuccess: boolean;
   @Input() name: any;
@@ -52,15 +55,27 @@ export class AppComponent {
     this.message = '';
   }
 
-  addCategory(categoryValue: string) {
-    this.categories.push( { category: categoryValue } );
+  delete(messageKey: string) {
+    this.items.remove( messageKey );
+  }
+  
+  
+  
+  
+  
+  
+  addCategory(pickedColor: string, categoryValue: string) {
+    this.categories.push( { color: pickedColor, category: categoryValue } );
     this.category = '';
     this.addingCategory = false;
   }
 
-  delete(messageKey: string) {
-    this.items.remove( messageKey );
+  updateCategory(key: string, chosenColor: string) {
+    console.log('Item Key: ' + key);
+    console.log('Color: ' + chosenColor);
+    this.items.update(key, { category: chosenColor });
   }
+
 
 
 }
