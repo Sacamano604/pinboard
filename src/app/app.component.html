@@ -42,22 +42,27 @@
   <div class="row row-offcanvas row-offcanvas-left">
     <!-- Sidebar -->
     <div class="col-6 col-md-3 sidebar-offcanvas" id="sidebar">
-      <h3>Categories</h3>
-      <ul class="categoriesList">
-        <li><a href="#" (click)="filterCategory()">List All</a><li>
-        <li *ngFor="let item of categories | async"><a href="#" (click)="filterCategory(item.color)"><span class="categoryColor" [ngStyle]="{ 'background-color': item.color }"> </span> {{ item.category }}</a></li>
-      </ul>
-      <input name="color" id="chosenColor" class="form-control" *ngIf="addingCategory" [colorPicker]="color" (colorPickerChange)="color=$event" [style.background]="color" [value]="color" />
-      <input type="text" class="form-control" id="category" placeholder="Add category" (keyup.enter)="addCategory(color, $event.target.value)" [(ngModel)]="category" *ngIf="addingCategory" />
+      <h3>Organization</h3>
 
+      <!-- If the user has no categories setup -->
+      <div class="noCategories" *ngIf="!categoriesPresent">
+        <p>Seems you do not have any categories created for organization.</p><p><a href="#" (click)="addingCategory = !addingCategory">Add new category</a></p>
+      </div> 
+     
+     <!-- If the user has categories setup -->
+      <div class="hasCategories" *ngIf="categoriesPresent">
+        <p><a href="#" (click)="filterCategory()">Display all categories</a></p>
+        <ul class="categoriesList">
+          <li *ngFor="let item of categories | async"><a href="#" (click)="filterCategory(item.color)"><span class="categoryColor" [ngStyle]="{ 'background-color': item.color }"> </span> {{ item.category }}</a></li>
+        </ul>
+        <p><a href="#" (click)="addingCategory = !addingCategory">Add new category</a></p>
+      </div>
 
-
-
-
-      <p><a href="#" (click)="addingCategory = !addingCategory">Add new category</a></p>
-
-      
-
+      <div class="addCategory" *ngIf="addingCategory">
+        <input name="color" id="chosenColor" class="form-control" [colorPicker]="color" (colorPickerChange)="color=$event" [style.background]="color" [value]="color" />
+        <input type="text" class="form-control" id="category" placeholder="Add category" (keyup.enter)="addCategory(color, $event.target.value)" [(ngModel)]="category" />
+        <p class="cancelAddCategory" (click)="addingCategory = !addingCategory"><a href="#">Cancel add category</a></p>
+      </div>
 
 
 

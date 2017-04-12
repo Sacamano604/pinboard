@@ -21,6 +21,7 @@ export class AppComponent {
   addingCategory: boolean;
   color: string = "#333";
   filteredCategory: BehaviorSubject<any>;
+  categoriesPresent: boolean;
 
   @Input() logoutSuccess: boolean;
   @Input() name: any;
@@ -42,9 +43,19 @@ export class AppComponent {
 
         this.categories = af.database.list('/users/' + auth.uid + '/categories/', {
           query: {
-            orderByKey: true
+            orderByKey: true,
+            preserveSnapshot: true
           }
         });
+
+        this.categories.subscribe(category => {
+          if (category.length < 1) {
+            this.categoriesPresent = false;
+          } else {
+            this.categoriesPresent = true;
+          }
+        });
+
       }
     });
   }
@@ -76,8 +87,6 @@ export class AppComponent {
 
   filterCategory(filteredColor: string) {
     this.filteredCategory.next(filteredColor);
-}
-
-
+  }
 
 }
