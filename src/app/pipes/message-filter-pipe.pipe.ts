@@ -7,7 +7,7 @@ import { AppComponent } from '../app.component';
   name: 'messageFilterPipe'
 })
 export class MessageFilterPipe implements PipeTransform {
- transform(messages : AppComponent[], inputText : string) {
+ transform(messages: AppComponent[], inputText: string) {
     if (messages === null) {
       return null;
     }

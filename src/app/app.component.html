@@ -44,11 +44,10 @@
     <div class="col-6 col-md-3 sidebar-offcanvas" id="sidebar">
       <h3>Categories</h3>
       <ul class="categoriesList">
-        <li *ngFor="let item of categories | async"><a href="#"><span class="categoryColor" [ngStyle]="{ 'background-color': item.color }"> </span> {{ item.category }}</a></li>
-        
+        <li><a href="#" (click)="filterCategory()">List All</a><li>
+        <li *ngFor="let item of categories | async"><a href="#" (click)="filterCategory(item.color)"><span class="categoryColor" [ngStyle]="{ 'background-color': item.color }"> </span> {{ item.category }}</a></li>
       </ul>
       <input name="color" id="chosenColor" class="form-control" *ngIf="addingCategory" [colorPicker]="color" (colorPickerChange)="color=$event" [style.background]="color" [value]="color" />
-
       <input type="text" class="form-control" id="category" placeholder="Add category" (keyup.enter)="addCategory(color, $event.target.value)" [(ngModel)]="category" *ngIf="addingCategory" />
 
 
@@ -57,7 +56,6 @@
 
       <p><a href="#" (click)="addingCategory = !addingCategory">Add new category</a></p>
 
-      <!--<input type="color" id="html5colorpicker" ng-change="pickedColor();" value="#ff0000" style="width:85%;">-->
       
 
 

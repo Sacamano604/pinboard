@@ -2,6 +2,8 @@ import { Component, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AngularFire, AuthProviders, AuthMethods, FirebaseListObservable } from 'angularfire2';
 import { ColorPickerService } from 'angular2-color-picker';
+import { Subject } from 'rxjs/Subject';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Component({
   selector: 'app-root',
@@ -18,17 +20,20 @@ export class AppComponent {
   category: string = '';
   addingCategory: boolean;
   color: string = "#333";
+  filteredCategory: BehaviorSubject<any>;
 
   @Input() logoutSuccess: boolean;
   @Input() name: any;
 
   constructor(public af: AngularFire) {
+    this.filteredCategory = new BehaviorSubject(undefined);
 
     this.af.auth.subscribe(auth => {
       if (auth) {
        this.items = af.database.list('/users/' + auth.uid + '/messages', {
           query: {
-            limitToLast: 50
+            orderByChild: 'category',
+            equalTo: this.filteredCategory
           }
        });
         this.name = auth;
@@ -37,7 +42,7 @@ export class AppComponent {
 
         this.categories = af.database.list('/users/' + auth.uid + '/categories/', {
           query: {
-            limitToLast: 50
+            orderByKey: true
           }
         });
       }
@@ -59,11 +64,6 @@ export class AppComponent {
     this.items.remove( messageKey );
   }
   
-  
-  
-  
-  
-  
   addCategory(pickedColor: string, categoryValue: string) {
     this.categories.push( { color: pickedColor, category: categoryValue } );
     this.category = '';
@@ -71,10 +71,12 @@ export class AppComponent {
   }
 
   updateCategory(key: string, chosenColor: string) {
-    console.log('Item Key: ' + key);
-    console.log('Color: ' + chosenColor);
     this.items.update(key, { category: chosenColor });
   }
+
+  filterCategory(filteredColor: string) {
+    this.filteredCategory.next(filteredColor);
+}
 
 
 
