@@ -51,9 +51,9 @@
      
      <!-- If the user has categories setup -->
       <div class="hasCategories" *ngIf="categoriesPresent">
-        <p><a href="#" (click)="filterCategory()">Display all categories</a></p>
+        <p><a href="#" (click)="filterCategory()">Show all</a></p>
         <ul class="categoriesList">
-          <li *ngFor="let item of categories | async"><a href="#" (click)="filterCategory(item.color)"><span class="categoryColor" [ngStyle]="{ 'background-color': item.color }"> </span> {{ item.category }}</a></li>
+          <li *ngFor="let item of categories | async"><a href="#" (click)="filterCategory(item.color)"><span class="categoryColor" [ngStyle]="{ 'background-color': item.color }"> </span> {{ item.category }}</a> <a href="#"><span class="glyphicon glyphicon-remove delteGlyph"></span></a></li>
         </ul>
         <p><a href="#" (click)="addingCategory = !addingCategory">Add new category</a></p>
       </div>
