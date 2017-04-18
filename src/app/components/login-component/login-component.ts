@@ -5,8 +5,8 @@ import { AppComponent } from '../../app.component';
 
 @Component({
   selector: 'login-component',
-  templateUrl: './login-component.component.html',
-  styleUrls: ['./login-component.component.css']
+  templateUrl: './login-component.html',
+  styleUrls: ['./login-component.css']
 })
 export class LoginComponent {
   @Input() logoutSuccess: boolean;

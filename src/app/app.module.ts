@@ -7,7 +7,8 @@ import { ColorPickerModule } from 'angular2-color-picker';
 
 import { AppComponent } from './app.component';
 import { MessageFilterPipe } from './pipes/message-filter-pipe.pipe';
-import { LoginComponent } from './components/login-component/login-component.component';
+import { LoginComponent } from './components/login-component/login-component';
+import { NavbarComponent } from './components/navbar-component/navbar-component';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyB7W5NYhphz2y4tEdMOgzgq_8xMYf1M28Q",
@@ -21,7 +22,8 @@ export const firebaseConfig = {
   declarations: [
     AppComponent,
     MessageFilterPipe,
-    LoginComponent
+    LoginComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

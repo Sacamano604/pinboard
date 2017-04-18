@@ -102,7 +102,7 @@ export class AppComponent {
     this.categories.remove(key);
     this.items.subscribe(item => {
       for (let i in item) {
-        if(this.confirmPassedColor === item[i].category) {
+        if (this.confirmPassedColor === item[i].category) {
           this.items.update(item[i].$key, { category: '#333' });
         }
       }
