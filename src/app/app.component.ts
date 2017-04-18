@@ -110,12 +110,12 @@ export class AppComponent {
   }
 
 
+
+
+
+
+
+
+
+
 }
-
-
-//  this.categories.subscribe(category => {
-//           if (category.length < 1) {
-//             this.categoriesPresent = false;
-//           } else {
-//             this.categoriesPresent = true;
-//           }

@@ -63,7 +63,8 @@
                   <h4 class="modal-title" id="myModalLabel">Confirm remove</h4>
                 </div>
                 <div class="modal-body">
-                  <p>Are you sure you would like to delete the following category: <strong>{{ confirmPassedCategory }}</strong></p>
+                  <p>Are you sure you would like to delete the following category: <strong>{{ confirmPassedCategory }}</strong>.</p>
+                  <p><em>This will also reset any pins with this category color.</em></p>
                 </div>
                 <div class="modal-footer">
                   <button class="btn btn-success" (click)="confirmDeleteCategory(confirmPassedKey)" data-dismiss="modal">Yes</button>
