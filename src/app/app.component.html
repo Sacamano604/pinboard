@@ -73,28 +73,15 @@
               </div>
             </div>
           </div>
-          
-          
-          
-
-
-
         </ul>
         <p><a href="#" (click)="addingCategory = !addingCategory">Add new category</a></p>
       </div>
-
-
-
-
 
       <div class="addCategory" *ngIf="addingCategory">
         <input name="color" id="chosenColor" class="form-control" [colorPicker]="color" (colorPickerChange)="color=$event" [style.background]="color" [value]="color" />
         <input type="text" class="form-control" id="category" placeholder="Add category" (keyup.enter)="addCategory(color, $event.target.value)" [(ngModel)]="category" />
         <p class="cancelAddCategory" (click)="addingCategory = !addingCategory"><a href="#">Cancel add category</a></p>
       </div>
-
-
-
     </div><!-- sidebar -->
 
     <!-- Main Body -->
@@ -131,12 +118,6 @@
         </div>
       </div><!-- Row -->
     </div>
-
-
-
-
-
-
   </div><!-- row off canvas -->
 </div><!-- Container -->
 
