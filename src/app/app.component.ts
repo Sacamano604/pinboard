@@ -22,6 +22,8 @@ export class AppComponent {
   color: string = "#333";
   filteredCategory: BehaviorSubject<any>;
   categoriesPresent: boolean;
+  confirmPassedKey: string;
+  confirmPassedCategory: string;
 
   @Input() logoutSuccess: boolean;
   @Input() name: any;
@@ -88,5 +90,15 @@ export class AppComponent {
   filterCategory(filteredColor: string) {
     this.filteredCategory.next(filteredColor);
   }
+
+  deleteCategory(passedKey: string, passedCategory: string) {
+    this.confirmPassedKey = passedKey;
+    this.confirmPassedCategory = passedCategory;
+  }
+
+  confirmDeleteCategory(key: string) {
+    this.categories.remove(key);
+  }
+
 
 }
