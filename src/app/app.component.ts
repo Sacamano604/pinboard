@@ -24,6 +24,7 @@ export class AppComponent {
   categoriesPresent: boolean;
   confirmPassedKey: string;
   confirmPassedCategory: string;
+  confirmPassedColor: string;
 
   @Input() logoutSuccess: boolean;
   @Input() name: any;
@@ -91,14 +92,30 @@ export class AppComponent {
     this.filteredCategory.next(filteredColor);
   }
 
-  deleteCategory(passedKey: string, passedCategory: string) {
+  deleteCategory(passedKey: string, passedCategory: string, passedColor: string) {
     this.confirmPassedKey = passedKey;
     this.confirmPassedCategory = passedCategory;
+    this.confirmPassedColor = passedColor;
   }
 
   confirmDeleteCategory(key: string) {
     this.categories.remove(key);
+    this.items.subscribe(item => {
+      for (let i in item) {
+        if(this.confirmPassedColor === item[i].category) {
+          this.items.update(item[i].$key, { category: '#333' });
+        }
+      }
+    });
   }
 
 
 }
+
+
+//  this.categories.subscribe(category => {
+//           if (category.length < 1) {
+//             this.categoriesPresent = false;
+//           } else {
+//             this.categoriesPresent = true;
+//           }
