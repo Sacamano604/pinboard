@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AngularFire, AuthProviders, AuthMethods, FirebaseListObservable } from 'angularfire2';
 import { ColorPickerService } from 'angular2-color-picker';
@@ -14,8 +14,6 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 export class AppComponent {
   items: FirebaseListObservable<any>;
   categories: FirebaseListObservable<any>;
-  displayName: string;
-  displayImageUrl: string;
   message: string = '';
   category: string = '';
   addingCategory: boolean;
@@ -26,10 +24,16 @@ export class AppComponent {
   confirmPassedCategory: string;
   confirmPassedColor: string;
 
-  @Input() logoutSuccess: boolean;
-  @Input() name: any;
+  
+
+  @Output() logoutSuccess: boolean;
+  @Output() name: any;
+  @Output() displayName: string;
+  @Output() displayImageUrl: string;
+  @Output() filterValue: string = '';
 
   constructor(public af: AngularFire) {
+    
     this.filteredCategory = new BehaviorSubject(undefined);
 
     this.af.auth.subscribe(auth => {
@@ -107,6 +111,10 @@ export class AppComponent {
         }
       }
     });
+  }
+
+  inputEvent(filter) {
+    this.filterValue = filter;
   }
 
 

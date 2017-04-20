@@ -2,7 +2,6 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 import { AppComponent } from '../app.component';
 
-
 @Pipe({
   name: 'messageFilterPipe'
 })
