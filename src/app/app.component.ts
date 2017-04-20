@@ -12,20 +12,12 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 })
 
 export class AppComponent {
-  items: FirebaseListObservable<any>;
-  @Output() categories: FirebaseListObservable<any>;
   message: string = '';
-  category: string = '';
-  addingCategory: boolean;
-  color: string = "#333";
-  filteredCategory: BehaviorSubject<any>;
+  @Output() items: FirebaseListObservable<any>;
+  @Output() categories: FirebaseListObservable<any>;
+  @Output() color: string = '#333';
+  @Output() filteredCategory: BehaviorSubject<any>;
   @Output() categoriesPresent: boolean;
-  confirmPassedKey: string;
-  confirmPassedCategory: string;
-  confirmPassedColor: string;
-
-  
-
   @Output() logoutSuccess: boolean;
   @Output() name: any;
   @Output() displayName: string;
@@ -34,7 +26,7 @@ export class AppComponent {
 
   constructor(public af: AngularFire) {
     
-    this.filteredCategory = new BehaviorSubject(undefined);
+    // this.filteredCategory = new BehaviorSubject(undefined);
 
     this.af.auth.subscribe(auth => {
       if (auth) {
@@ -82,36 +74,36 @@ export class AppComponent {
     this.items.remove( messageKey );
   }
   
-  addCategory(pickedColor: string, categoryValue: string) {
-    this.categories.push( { color: pickedColor, category: categoryValue } );
-    this.category = '';
-    this.addingCategory = false;
-  }
+  // addCategory(pickedColor: string, categoryValue: string) {
+  //   this.categories.push( { color: pickedColor, category: categoryValue } );
+  //   this.category = '';
+  //   this.addingCategory = false;
+  // }
 
   updateCategory(key: string, chosenColor: string) {
     this.items.update(key, { category: chosenColor });
   }
 
-  filterCategory(filteredColor: string) {
-    this.filteredCategory.next(filteredColor);
-  }
+  // filterCategory(filteredColor: string) {
+  //   this.filteredCategory.next(filteredColor);
+  // }
 
-  deleteCategory(passedKey: string, passedCategory: string, passedColor: string) {
-    this.confirmPassedKey = passedKey;
-    this.confirmPassedCategory = passedCategory;
-    this.confirmPassedColor = passedColor;
-  }
+  // deleteCategory(passedKey: string, passedCategory: string, passedColor: string) {
+  //   this.confirmPassedKey = passedKey;
+  //   this.confirmPassedCategory = passedCategory;
+  //   this.confirmPassedColor = passedColor;
+  // }
 
-  confirmDeleteCategory(key: string) {
-    this.categories.remove(key);
-    this.items.subscribe(item => {
-      for (let i in item) {
-        if (this.confirmPassedColor === item[i].category) {
-          this.items.update(item[i].$key, { category: '#333' });
-        }
-      }
-    });
-  }
+  // confirmDeleteCategory(key: string) {
+  //   this.categories.remove(key);
+  //   this.items.subscribe(item => {
+  //     for (let i in item) {
+  //       if (this.confirmPassedColor === item[i].category) {
+  //         this.items.update(item[i].$key, { category: this.color });
+  //       }
+  //     }
+  //   });
+  // }
 
   inputEvent(filter) {
     this.filterValue = filter;
