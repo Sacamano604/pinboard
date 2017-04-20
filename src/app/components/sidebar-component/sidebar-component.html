@@ -1,0 +1,43 @@
+<!-- Sidebar -->
+    <div class="col-6 col-md-3 sidebar-offcanvas" id="sidebar">
+      <h3>Organization</h3>
+
+      <!-- If the user has no categories setup -->
+      <div class="noCategories" *ngIf="!categoriesPresent">
+        <p>Seems you do not have any categories created for organization.</p><p><a href="#" (click)="addingCategory = !addingCategory">Add new category</a></p>
+      </div> 
+     
+     <!-- If the user has categories setup -->
+      <div class="hasCategories" *ngIf="categoriesPresent">
+        <p><a href="#" (click)="filterCategory()">Show all</a></p>
+        <ul class="categoriesList">
+          <li *ngFor="let item of categories | async"><a href="#" (click)="filterCategory(item.color)"><span class="categoryColor" [ngStyle]="{ 'background-color': item.color }"> </span> {{ item.category }}</a> <a href="#" (click)="deleteCategory(item.$key, item.category, item.color)" data-toggle="modal" data-target=".bs-example-modal-sm"><span class="glyphicon glyphicon-remove delteGlyph"></span></a>
+          </li>
+          <!-- Confirm delete category modal -->
+          <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="confirmCategoryDeleteModal">
+            <div class="modal-dialog modal-sm" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="myModalLabel">Confirm remove</h4>
+                </div>
+                <div class="modal-body">
+                  <p>Are you sure you would like to delete the following category: <strong>{{ confirmPassedCategory }}</strong>.</p>
+                  <p><em>This will also reset any pins with this category color.</em></p>
+                </div>
+                <div class="modal-footer">
+                  <button class="btn btn-success" (click)="confirmDeleteCategory(confirmPassedKey)" data-dismiss="modal">Yes</button>
+                  <button class="btn btn-danger" data-dismiss="modal">No</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ul>
+        <p><a href="#" (click)="addingCategory = !addingCategory">Add new category</a></p>
+      </div>
+
+      <div class="addCategory" *ngIf="addingCategory">
+        <input name="color" id="chosenColor" class="form-control" [colorPicker]="color" (colorPickerChange)="color=$event" [style.background]="color" [value]="color" />
+        <input type="text" class="form-control" id="category" placeholder="Add category" (keyup.enter)="addCategory(color, $event.target.value)" [(ngModel)]="category" />
+        <p class="cancelAddCategory" (click)="addingCategory = !addingCategory"><a href="#">Cancel add category</a></p>
+      </div>
+    </div><!-- sidebar -->

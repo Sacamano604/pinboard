@@ -13,13 +13,13 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 export class AppComponent {
   items: FirebaseListObservable<any>;
-  categories: FirebaseListObservable<any>;
+  @Output() categories: FirebaseListObservable<any>;
   message: string = '';
   category: string = '';
   addingCategory: boolean;
   color: string = "#333";
   filteredCategory: BehaviorSubject<any>;
-  categoriesPresent: boolean;
+  @Output() categoriesPresent: boolean;
   confirmPassedKey: string;
   confirmPassedCategory: string;
   confirmPassedColor: string;

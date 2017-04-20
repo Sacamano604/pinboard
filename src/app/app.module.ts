@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { MessageFilterPipe } from './pipes/message-filter-pipe.pipe';
 import { LoginComponent } from './components/login-component/login-component';
 import { NavbarComponent } from './components/navbar-component/navbar-component';
+import { SidebarComponent } from './components/sidebar-component/sidebar-component';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyB7W5NYhphz2y4tEdMOgzgq_8xMYf1M28Q",
@@ -23,7 +24,8 @@ export const firebaseConfig = {
     AppComponent,
     MessageFilterPipe,
     LoginComponent,
-    NavbarComponent
+    NavbarComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
