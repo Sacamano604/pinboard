@@ -25,8 +25,6 @@ export class AppComponent {
   @Output() filterValue: string = '';
 
   constructor(public af: AngularFire) {
-    
-    // this.filteredCategory = new BehaviorSubject(undefined);
 
     this.af.auth.subscribe(auth => {
       if (auth) {
@@ -36,6 +34,7 @@ export class AppComponent {
             equalTo: this.filteredCategory
           }
        });
+
         this.name = auth;
         this.displayName = auth.google.displayName;
         this.displayImageUrl = auth.google.photoURL;
@@ -54,7 +53,6 @@ export class AppComponent {
             this.categoriesPresent = true;
           }
         });
-
       }
     });
   }
@@ -74,36 +72,9 @@ export class AppComponent {
     this.items.remove( messageKey );
   }
   
-  // addCategory(pickedColor: string, categoryValue: string) {
-  //   this.categories.push( { color: pickedColor, category: categoryValue } );
-  //   this.category = '';
-  //   this.addingCategory = false;
-  // }
-
   updateCategory(key: string, chosenColor: string) {
     this.items.update(key, { category: chosenColor });
   }
-
-  // filterCategory(filteredColor: string) {
-  //   this.filteredCategory.next(filteredColor);
-  // }
-
-  // deleteCategory(passedKey: string, passedCategory: string, passedColor: string) {
-  //   this.confirmPassedKey = passedKey;
-  //   this.confirmPassedCategory = passedCategory;
-  //   this.confirmPassedColor = passedColor;
-  // }
-
-  // confirmDeleteCategory(key: string) {
-  //   this.categories.remove(key);
-  //   this.items.subscribe(item => {
-  //     for (let i in item) {
-  //       if (this.confirmPassedColor === item[i].category) {
-  //         this.items.update(item[i].$key, { category: this.color });
-  //       }
-  //     }
-  //   });
-  // }
 
   inputEvent(filter) {
     this.filterValue = filter;

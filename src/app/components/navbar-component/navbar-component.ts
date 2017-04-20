@@ -9,14 +9,12 @@ import { AngularFire, AuthProviders, AuthMethods, FirebaseListObservable } from 
 
 export class NavbarComponent {
   @Output("logout") logoutEvent = new EventEmitter<boolean>(false);
-
+  @Output() inputEvent = new EventEmitter<string>(this.filterValue);
   @Input() logoutSuccess: boolean;
   @Input() name: boolean;
   @Input() displayName: string;
   @Input() displayImageUrl: string;
-
   @Input() filterValue: any;
-  @Output() inputEvent = new EventEmitter<string>(this.filterValue);
 
   constructor() { }
 
