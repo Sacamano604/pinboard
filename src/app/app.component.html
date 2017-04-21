@@ -33,7 +33,7 @@
                   <li class="dropdown-submenu">
                     <a href="#">Change Category</a>
                     <ul class="dropdown-menu">
-                      <li *ngFor="let cat of categories | async"><a href="#" (click)="updateCategory(item.$key, cat.color)">{{ cat.category }}</a></li>
+                      <li *ngFor="let cat of categories | async"><a href="#" (click)="updateCategory(item.$key, cat.color)">{{ cat.category }} <span class="categoryColor" [ngStyle]="{ 'background-color': cat.color }"> </span></a></li>
                     </ul>
                   </li>
                   <li role="separator" class="divider"></li>
