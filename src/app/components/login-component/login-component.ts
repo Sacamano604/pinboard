@@ -7,10 +7,11 @@ import { AngularFire, AuthProviders, AuthMethods, FirebaseListObservable } from 
   styleUrls: ['./login-component.css']
 })
 export class LoginComponent {
+
   @Input() logoutSuccess: boolean;
 
   constructor(public af: AngularFire) { }
-
+    // Built in firebase authentication
     googleLogin() {
       this.af.auth.login({
         provider: AuthProviders.Google,

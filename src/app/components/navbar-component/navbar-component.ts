@@ -8,20 +8,21 @@ import { AngularFire, AuthProviders, AuthMethods, FirebaseListObservable } from 
 })
 
 export class NavbarComponent {
+  @Input() filterValue: any;
   @Output("logout") logoutEvent = new EventEmitter<boolean>(false);
   @Output() inputEvent = new EventEmitter<string>(this.filterValue);
   @Input() logoutSuccess: boolean;
   @Input() name: boolean;
   @Input() displayName: string;
   @Input() displayImageUrl: string;
-  @Input() filterValue: any;
-
+  
+  // Constructor not needed as we're emitting events
   constructor() { }
-
+  // Logout event
   logout() {
     this.logoutEvent.emit(true);
   }
-
+  // Handles filtering messages, emitting the value typed
   ngDoCheck() {
     this.inputEvent.emit(this.filterValue);
   }

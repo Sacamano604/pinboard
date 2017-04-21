@@ -10,7 +10,6 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 })
 
 export class SidebarComponent {
-
   @Input() filteredCategory: BehaviorSubject<any>;
   @Input() categories: FirebaseListObservable<any>;
   @Input() items: FirebaseListObservable<any>;
@@ -25,23 +24,23 @@ export class SidebarComponent {
   constructor(public af: AngularFire) {
      this.filteredCategory = new BehaviorSubject(undefined);
   }
-
+  // Adds category to the list
   addCategory(pickedColor: string, categoryValue: string) {
     this.categories.push( { color: pickedColor, category: categoryValue } );
     this.category = '';
     this.addingCategory = false;
   }
-
+  // Click event to filter messages to only show the chosen category
   filterCategory(filteredColor: string) {
     this.filteredCategory.next(filteredColor);
   }
-  
+  // Passing the category chosen's values to the confirm modal
   deleteCategory(passedKey: string, passedCategory: string, passedColor: string) {
     this.confirmPassedKey = passedKey;
     this.confirmPassedCategory = passedCategory;
     this.confirmPassedColor = passedColor;
   }
-
+  // Deleting the category chosen but also resetting any existing messages with the category back to default
   confirmDeleteCategory(key: string) {
     this.categories.remove(key);
     this.items.subscribe(item => {

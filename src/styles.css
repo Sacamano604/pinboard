@@ -23,3 +23,8 @@ body {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+/* Style doesn't take on the component level */
+.color-picker {
+    top: 240px !important;
+    left: 15px !important;
+}

@@ -9,6 +9,7 @@
 <div class="container"  *ngIf="name">
   <div class="row row-offcanvas row-offcanvas-left">
     
+    <!-- Sidebar Component -->
     <sidebar-component [categoriesPresent]="categoriesPresent" [categories]="categories" [items]="items" [color]="color" [filteredCategory]="filteredCategory"></sidebar-component>
 
     <!-- Main Body -->
@@ -23,7 +24,7 @@
             <div class="caption">
               <span class="glyphicon glyphicon-bookmark topLeft" aria-hidden="true" [ngStyle]="{ 'color': item.category }"></span>
               <p>{{ item.message }}</p>
-              <!--<p>{{ item.$key }}</p>-->
+              <!-- Actions button on message -->
               <div class="btn-group actionsButton">
                 <button type="button" class="btn btn-default dropdown-toggle btn-xs" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>

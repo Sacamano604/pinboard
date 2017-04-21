@@ -25,7 +25,9 @@ export class AppComponent {
   @Output() filterValue: string = '';
 
   constructor(public af: AngularFire) {
-
+    // If the user is authenticated, display their messages.
+    // Currently ordering by category for the filter to work correctly.
+    // Would like to find a way around this by displaying the messages by date added
     this.af.auth.subscribe(auth => {
       if (auth) {
        this.items = af.database.list('/users/' + auth.uid + '/messages', {
@@ -34,18 +36,18 @@ export class AppComponent {
             equalTo: this.filteredCategory
           }
        });
-
+        // Setting variables to be used in the template
         this.name = auth;
         this.displayName = auth.google.displayName;
         this.displayImageUrl = auth.google.photoURL;
-
+        // Displaying the user's categories
         this.categories = af.database.list('/users/' + auth.uid + '/categories/', {
           query: {
             orderByKey: true,
             preserveSnapshot: true
           }
         });
-
+        // Finding out if the user even has any categories.
         this.categories.subscribe(category => {
           if (category.length < 1) {
             this.categoriesPresent = false;
@@ -56,37 +58,28 @@ export class AppComponent {
       }
     });
   }
-  
+  // Built in firebase logout functionality.
   logout() {
     this.logoutSuccess = true;
     this.name = null;
     return this.af.auth.logout();
   }
-
+  // Pushing new messages to the DB and resetting the message input
   send(messageValue: string) {
     this.items.push( { message: messageValue, category:  'default', color: '#333'} );
     this.message = '';
   }
-
+  // Deleting a message
   delete(messageKey: string) {
     this.items.remove( messageKey );
   }
-  
+  // Updaing a message's category
   updateCategory(key: string, chosenColor: string) {
     this.items.update(key, { category: chosenColor });
   }
-
+  // Grabbing the filter value from the navbar-component
   inputEvent(filter) {
     this.filterValue = filter;
   }
-
-
-
-
-
-
-
-
-
 
 }
