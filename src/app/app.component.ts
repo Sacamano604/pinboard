@@ -16,7 +16,7 @@ export class AppComponent {
   @Output() items: FirebaseListObservable<any>;
   @Output() categories: FirebaseListObservable<any>;
   @Output() color: string = '#333';
-  @Output() filteredCategory: BehaviorSubject<any>;
+  @Input() filteredCategory: BehaviorSubject<any>;
   @Output() categoriesPresent: boolean;
   @Output() logoutSuccess: boolean;
   @Output() name: any;
@@ -25,6 +25,8 @@ export class AppComponent {
   @Output() filterValue: string = '';
 
   constructor(public af: AngularFire) {
+    // Using Behavior Subject to filter messages via category
+    this.filteredCategory = new BehaviorSubject(undefined);
     // If the user is authenticated, display their messages.
     // Currently ordering by category for the filter to work correctly.
     // Would like to find a way around this by displaying the messages by date added

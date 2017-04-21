@@ -20,10 +20,8 @@ export class SidebarComponent {
   confirmPassedColor: string;
   category: string = '';
   addingCategory: boolean;
-    
-  constructor(public af: AngularFire) {
-     this.filteredCategory = new BehaviorSubject(undefined);
-  }
+  
+  constructor() {  }
   // Adds category to the list
   addCategory(pickedColor: string, categoryValue: string) {
     this.categories.push( { color: pickedColor, category: categoryValue } );
