@@ -16,13 +16,15 @@ export class AppComponent {
   @Output() items: FirebaseListObservable<any>;
   @Output() categories: FirebaseListObservable<any>;
   @Output() color: string = '#333';
-  @Input() filteredCategory: BehaviorSubject<any>;
+  @Output() filteredCategory: BehaviorSubject<any>;
   @Output() categoriesPresent: boolean;
   @Output() logoutSuccess: boolean;
   @Output() name: any;
   @Output() displayName: string;
   @Output() displayImageUrl: string;
   @Output() filterValue: string = '';
+  deletingKey: string;
+  deletingMessage: string;
 
   constructor(public af: AngularFire) {
     // Using Behavior Subject to filter messages via category
@@ -72,8 +74,13 @@ export class AppComponent {
     this.message = '';
   }
   // Deleting a message
-  delete(messageKey: string) {
-    this.items.remove( messageKey );
+  delete(messageKey: string, message: string) {
+    this.deletingKey = messageKey;
+    this.deletingMessage = message;
+  }
+  // Confirm the message delete
+  confirmDeleteMessage(passedKey: string) {
+    this.items.remove( passedKey );
   }
   // Updaing a message's category
   updateCategory(key: string, chosenColor: string) {

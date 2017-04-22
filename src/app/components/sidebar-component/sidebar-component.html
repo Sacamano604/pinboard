@@ -11,14 +11,14 @@
       <div class="hasCategories" *ngIf="categoriesPresent">
         <p><a href="#" (click)="filterCategory()">Show all</a></p>
         <ul class="categoriesList">
-          <li *ngFor="let item of categories | async"><a href="#" (click)="filterCategory(item.color)"><span class="categoryColor" [ngStyle]="{ 'background-color': item.color }"> </span> {{ item.category }}</a> <a href="#" (click)="deleteCategory(item.$key, item.category, item.color)" data-toggle="modal" data-target=".bs-example-modal-sm"><span class="glyphicon glyphicon-remove delteGlyph"></span></a>
+          <li *ngFor="let item of categories | async"><a href="#" (click)="filterCategory(item.color)"><span class="categoryColor" [ngStyle]="{ 'background-color': item.color }"> </span> {{ item.category }}</a> <a href="#" (click)="deleteCategory(item.$key, item.category, item.color)" data-toggle="modal" data-target=".bs-example-modal-sm-category"><span class="glyphicon glyphicon-remove delteGlyph"></span></a>
           </li>
           <!-- Confirm delete category modal -->
-          <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="confirmCategoryDeleteModal">
+          <div class="modal fade bs-example-modal-sm-category" tabindex="-1" role="dialog" aria-labelledby="confirmCategoryDeleteModal">
             <div class="modal-dialog modal-sm" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h4 class="modal-title" id="myModalLabel">Confirm remove</h4>
+                  <h4 class="modal-title" id="myModalLabel">Confirm Remove</h4>
                 </div>
                 <div class="modal-body">
                   <p>Are you sure you would like to delete the following category: <strong>{{ confirmPassedCategory }}</strong>.</p>

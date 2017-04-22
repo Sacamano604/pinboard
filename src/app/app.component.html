@@ -37,13 +37,32 @@
                     </ul>
                   </li>
                   <li role="separator" class="divider"></li>
-                  <li class="removeItem"><a href="#" (click)="delete(item.$key)">Remove</a></li>
+                  <li class="removeItem"><a href="#" (click)="delete(item.$key, item.message)" data-toggle="modal" data-target=".bs-example-modal-sm">Remove</a></li>
                 </ul>
               </div>
               <span class="clear"></span>
             </div>
           </div>
         </div>
+        <!-- Confirm delete category modal -->
+        <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="confirmMessageDeleteModal">
+          <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Confirm Remove</h4>
+              </div>
+              <div class="modal-body">
+                <p>Are you sure you would like to delete the following message?</p> 
+                <p><strong>{{ deletingMessage }}</strong></p>
+              </div>
+              <div class="modal-footer">
+                <button class="btn btn-success" (click)="confirmDeleteMessage(deletingKey)" data-dismiss="modal">Yes</button>
+                <button class="btn btn-danger" data-dismiss="modal">No</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div><!-- Row -->
     </div>
   </div><!-- row off canvas -->
